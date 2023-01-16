@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+    constructor(){
+        super();
+        this.state = {
+            count: 0,
+        }
+        this.increment = this.increment.bind(this);
+    }
+
+    increment() {
+        this.setState(previousValue => ({
+            count: previousValue.count + 1,
+        }));
+    }
   render() {
     return (
       <div>
-        <span className="value">0</span>
-        <button id="inc">Incrementa</button>
+        <span className="value">{this.state.count}</span>
+        <button id="inc" onClick={this.increment}>Incrementa</button>
       </div>
     );
   }
